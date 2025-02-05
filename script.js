@@ -26,22 +26,22 @@ function playGame() {
 
 function displayGameWinner(humanScore, computerScore, ties) {
     if (humanScore > computerScore)
-        console.log(`You won the game by ${humanScore}-${computerScore}! There were ${ties} ties.`);
+        alert(`You won the game by ${humanScore}-${computerScore}! There were ${ties} ties.`);
     else 
-        console.log(`You lost the game by ${computerScore}-${humanScore}! There were ${ties} ties.`);
+        alert(`You lost the game by ${computerScore}-${humanScore}! There were ${ties} ties.`);
 }
 
 function playRound(humanChoice, computerChoice) {
     let winner = getRoundWinner(humanChoice, computerChoice);
 
     if (winner == "human") {
-        console.log(`${humanChoice} beats ${computerChoice}! You win!`);
+        alert(`${humanChoice} beats ${computerChoice}! You win!`);
     }
     else if (winner == "computer") {
-        console.log(`${computerChoice} beats ${humanChoice}! You lose!`);
+        alert(`${computerChoice} beats ${humanChoice}! You lose!`);
     }
     else {
-        console.log(`It's a tie!`);
+        alert(`It's a tie!`);
     }
 
     return winner;
