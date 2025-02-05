@@ -1,28 +1,53 @@
-let humanScore = 0;
-let computerScore = 0;
+/* Entry code */
+playGame();
 
-const computerChoice = getComputerChoice();
-const humanChoice = getHumanChoice();
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+    let ties = 0;
+    const MAX_ROUNDS = 5;
 
-playRound(humanChoice, computerChoice);
+    while(humanScore + computerScore + ties < MAX_ROUNDS) {
+        const computerChoice = getComputerChoice();
+        const humanChoice = getHumanChoice();
+
+        let winner = playRound(humanChoice, computerChoice);
+
+        switch(winner) {
+            case "human": humanScore++; break;
+            case "computer": computerScore++; break;
+            case "tie": ties++; break;
+        }
+
+    }
+
+    displayGameWinner(humanScore, computerScore, ties);
+}
+
+function displayGameWinner(humanScore, computerScore, ties) {
+    if (humanScore > computerScore)
+        console.log(`You won the game by ${humanScore}-${computerScore}! There were ${ties} ties.`);
+    else 
+        console.log(`You lost the game by ${computerScore}-${humanScore}! There were ${ties} ties.`);
+}
 
 function playRound(humanChoice, computerChoice) {
-    let winner = getWinner(humanChoice, computerChoice);
+    let winner = getRoundWinner(humanChoice, computerChoice);
 
     if (winner == "human") {
         console.log(`${humanChoice} beats ${computerChoice}! You win!`);
-        humanScore++;
     }
     else if (winner == "computer") {
         console.log(`${computerChoice} beats ${humanChoice}! You lose!`);
-        computerScore++;
     }
     else {
         console.log(`It's a tie!`);
     }
+
+    return winner;
 }
 
-function getWinner(humanChoice, computerChoice) {
+function getRoundWinner(humanChoice, computerChoice) {
     switch (humanChoice) {
         case "rock":
             if (computerChoice == "paper") 
