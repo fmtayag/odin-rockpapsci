@@ -1,3 +1,9 @@
+let humanScore = 0;
+let computerScore = 0;
+
+const computerChoice = getComputerChoice();
+const humanChoice = getHumanChoice();
+
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
 
@@ -16,4 +22,3 @@ function getHumanChoice() {
 
     return choice;
 }
-
