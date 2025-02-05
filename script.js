@@ -10,9 +10,3 @@ function getComputerChoice() {
             return "scissor";
     }
 }
-
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
