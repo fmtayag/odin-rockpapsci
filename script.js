@@ -27,6 +27,8 @@ function playGame() {
 function displayGameWinner(humanScore, computerScore, ties) {
     if (humanScore > computerScore)
         alert(`You won the game by ${humanScore}-${computerScore}! There were ${ties} ties.`);
+    else if(humanScore == computerScore)
+        alert(`The game was tied ${humanScore}-${computerScore}! There were ${ties} ties.`);
     else 
         alert(`You lost the game by ${computerScore}-${humanScore}! There were ${ties} ties.`);
 }
