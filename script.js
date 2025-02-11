@@ -1,6 +1,16 @@
 /* Entry code */
 // playGame();
 
+let buttonRock = document.querySelector("button#rock");
+let buttonPaper = document.querySelector("button#paper");
+let buttonScissor = document.querySelector("button#scissor");
+let options = document.querySelector("div#options");
+
+options.addEventListener("click", (e) => {
+    return e.target.id;
+});
+
+
 function playGame() {
     let humanScore = 0;
     let computerScore = 0;
