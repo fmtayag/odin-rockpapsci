@@ -1,5 +1,5 @@
 /* Entry code */
-playGame();
+// playGame();
 
 function playGame() {
     let humanScore = 0;
