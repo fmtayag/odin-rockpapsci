@@ -3,8 +3,8 @@
 
 let humanScore = 0;
 let computerScore = 0;
-let ties = 0;
-const MAX_ROUNDS = 5;
+// let ties = 0;
+// const MAX_ROUNDS = 5;
 
 let buttonRock = document.querySelector("button#rock");
 let buttonPaper = document.querySelector("button#paper");
@@ -32,29 +32,23 @@ function playGame(humanChoice) {
         case "computer": 
             computerScore++; 
             break;
-        case "tie": ties++; break;
     }
 
     dispScoreHuman.textContent = humanScore;
     dispScoreComputer.textContent = computerScore;
 
     if (humanScore >= 5 || computerScore >= 5) {
-        displayGameWinner(humanScore, computerScore, ties);
+        displayGameWinner(humanScore, computerScore);
     }
 }
 
-function displayGameWinner(humanScore, computerScore, ties) {
+function displayGameWinner(humanScore, computerScore) {
     if (humanScore > computerScore)
         // alert(`You won the game by ${humanScore}-${computerScore}! There were ${ties} ties.`);
-        paraResults.textContent = `You won the game by ${humanScore}-${computerScore}! There were ${ties} ties.`;
-
-    else if(humanScore == computerScore)
-        // alert(`The game was tied ${humanScore}-${computerScore}! There were ${ties} ties.`);
-        paraResults.textContent = `The game was tied ${humanScore}-${computerScore}! There were ${ties} ties.`;
-
+        paraResults.textContent = `You won the game by ${humanScore}-${computerScore}!`;
     else 
         // alert(`You lost the game by ${computerScore}-${humanScore}! There were ${ties} ties.`);
-        paraResults.textContent = `You lost the game by ${computerScore}-${humanScore}! There were ${ties} ties.`;
+        paraResults.textContent = `You lost the game by ${computerScore}-${humanScore}!`;
 
 }
 
