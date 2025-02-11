@@ -1,10 +1,5 @@
-/* Entry code */
-// playGame();
-
 let humanScore = 0;
 let computerScore = 0;
-// let ties = 0;
-// const MAX_ROUNDS = 5;
 
 let buttonRock = document.querySelector("button#rock");
 let buttonPaper = document.querySelector("button#paper");
@@ -16,12 +11,11 @@ let options = document.querySelector("div#options");
 
 options.addEventListener("click", (e) => {
     const humanChoice = e.target.id;
-    playGame(humanChoice);
+    playGame(humanChoice); // Entry code
 });
 
 function playGame(humanChoice) {
     const computerChoice = getComputerChoice();
-    // const humanChoice = getHumanChoice();
 
     let winner = playRound(humanChoice, computerChoice);
 
@@ -44,10 +38,8 @@ function playGame(humanChoice) {
 
 function displayGameWinner(humanScore, computerScore) {
     if (humanScore > computerScore)
-        // alert(`You won the game by ${humanScore}-${computerScore}! There were ${ties} ties.`);
         paraResults.textContent = `You won the game by ${humanScore}-${computerScore}!`;
     else 
-        // alert(`You lost the game by ${computerScore}-${humanScore}! There were ${ties} ties.`);
         paraResults.textContent = `You lost the game by ${computerScore}-${humanScore}!`;
 
 }
@@ -55,18 +47,12 @@ function displayGameWinner(humanScore, computerScore) {
 function playRound(humanChoice, computerChoice) {
     let winner = getRoundWinner(humanChoice, computerChoice);
 
-    if (winner == "human") {
-        // alert(`${humanChoice} beats ${computerChoice}! You win!`);
+    if (winner == "human")
         paraResults.textContent = `${humanChoice} beats ${computerChoice}! You win!`;
-    }
-    else if (winner == "computer") {
-        // alert(`${computerChoice} beats ${humanChoice}! You lose!`);
+    else if (winner == "computer")
         paraResults.textContent = `${computerChoice} beats ${humanChoice}! You lose!`;
-    }
-    else {
-        // alert(`It's a tie!`);
+    else
         paraResults.textContent = `It's a tie!`;
-    }
 
     return winner;
 }
@@ -101,17 +87,8 @@ function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
 
     switch (choice) {
-        case 0:
-            return "rock";
-        case 1:
-            return "paper";
-        case 2:
-            return "scissor";
+        case 0: return "rock";
+        case 1: return "paper";
+        case 2: return "scissor";
     }
-}
-
-function getHumanChoice() {
-    let choice = prompt("Make your selection (rock, paper, or scissor): ").trim().toLowerCase();
-
-    return choice;
 }
