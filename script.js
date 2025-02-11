@@ -73,7 +73,7 @@ function playRound(humanChoice, computerChoice) {
     if (winner == "human")
         paraResults.textContent = `${humanChoice} beats ${computerChoice}! You win!`;
     else if (winner == "computer")
-        paraResults.textContent = `${computerChoice} beats ${humanChoice}! You lose!`;
+        paraResults.textContent = `${humanChoice} loses to ${computerChoice}! You lose!`;
     else
         paraResults.textContent = `It's a tie!`;
 
