@@ -38,17 +38,24 @@ function playGame(humanChoice) {
     dispScoreHuman.textContent = humanScore;
     dispScoreComputer.textContent = computerScore;
 
-    
-    // displayGameWinner(humanScore, computerScore, ties);
+    if (humanScore >= 5 || computerScore >= 5) {
+        displayGameWinner(humanScore, computerScore, ties);
+    }
 }
 
 function displayGameWinner(humanScore, computerScore, ties) {
     if (humanScore > computerScore)
-        alert(`You won the game by ${humanScore}-${computerScore}! There were ${ties} ties.`);
+        // alert(`You won the game by ${humanScore}-${computerScore}! There were ${ties} ties.`);
+        paraResults.textContent = `You won the game by ${humanScore}-${computerScore}! There were ${ties} ties.`;
+
     else if(humanScore == computerScore)
-        alert(`The game was tied ${humanScore}-${computerScore}! There were ${ties} ties.`);
+        // alert(`The game was tied ${humanScore}-${computerScore}! There were ${ties} ties.`);
+        paraResults.textContent = `The game was tied ${humanScore}-${computerScore}! There were ${ties} ties.`;
+
     else 
-        alert(`You lost the game by ${computerScore}-${humanScore}! There were ${ties} ties.`);
+        // alert(`You lost the game by ${computerScore}-${humanScore}! There were ${ties} ties.`);
+        paraResults.textContent = `You lost the game by ${computerScore}-${humanScore}! There were ${ties} ties.`;
+
 }
 
 function playRound(humanChoice, computerChoice) {
