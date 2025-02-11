@@ -1,37 +1,45 @@
 /* Entry code */
 // playGame();
 
+let humanScore = 0;
+let computerScore = 0;
+let ties = 0;
+const MAX_ROUNDS = 5;
+
 let buttonRock = document.querySelector("button#rock");
 let buttonPaper = document.querySelector("button#paper");
 let buttonScissor = document.querySelector("button#scissor");
+let paraResults = document.querySelector("p#results");
+let dispScoreHuman = document.querySelector("span#player"); 
+let dispScoreComputer = document.querySelector("span#computer"); 
 let options = document.querySelector("div#options");
 
 options.addEventListener("click", (e) => {
-    return e.target.id;
+    const humanChoice = e.target.id;
+    playGame(humanChoice);
 });
 
+function playGame(humanChoice) {
+    const computerChoice = getComputerChoice();
+    // const humanChoice = getHumanChoice();
 
-function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
-    let ties = 0;
-    const MAX_ROUNDS = 5;
+    let winner = playRound(humanChoice, computerChoice);
 
-    while(humanScore + computerScore + ties < MAX_ROUNDS) {
-        const computerChoice = getComputerChoice();
-        const humanChoice = getHumanChoice();
-
-        let winner = playRound(humanChoice, computerChoice);
-
-        switch(winner) {
-            case "human": humanScore++; break;
-            case "computer": computerScore++; break;
-            case "tie": ties++; break;
-        }
-
+    switch(winner) {
+        case "human": 
+            humanScore++; 
+            break;
+        case "computer": 
+            computerScore++; 
+            break;
+        case "tie": ties++; break;
     }
 
-    displayGameWinner(humanScore, computerScore, ties);
+    dispScoreHuman.textContent = humanScore;
+    dispScoreComputer.textContent = computerScore;
+
+    
+    // displayGameWinner(humanScore, computerScore, ties);
 }
 
 function displayGameWinner(humanScore, computerScore, ties) {
@@ -47,13 +55,16 @@ function playRound(humanChoice, computerChoice) {
     let winner = getRoundWinner(humanChoice, computerChoice);
 
     if (winner == "human") {
-        alert(`${humanChoice} beats ${computerChoice}! You win!`);
+        // alert(`${humanChoice} beats ${computerChoice}! You win!`);
+        paraResults.textContent = `${humanChoice} beats ${computerChoice}! You win!`;
     }
     else if (winner == "computer") {
-        alert(`${computerChoice} beats ${humanChoice}! You lose!`);
+        // alert(`${computerChoice} beats ${humanChoice}! You lose!`);
+        paraResults.textContent = `${computerChoice} beats ${humanChoice}! You lose!`;
     }
     else {
-        alert(`It's a tie!`);
+        // alert(`It's a tie!`);
+        paraResults.textContent = `It's a tie!`;
     }
 
     return winner;
